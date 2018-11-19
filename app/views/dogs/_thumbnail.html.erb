@@ -1,6 +1,8 @@
 <a href="<%= url_for(dog) %>">
   <article>
+    <% @likes = Like.where(dog_id: dog.id).count %>
     <h2 class="dog-name"><%= dog.name %></h2>
-    <%= image_tag url_for(dog.images.first), class: "dog-photo", alt: "Photo of #{dog.name}" %>
+    <h4><%= @likes.to_s + " " + "Like".pluralize(@likes) %></h4>
+    <%= image_tag dog.images.first.to_s, class: "dog-photo", alt: "Photo of #{dog.name}" %>
   </article>
 </a>

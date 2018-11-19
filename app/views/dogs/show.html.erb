@@ -2,10 +2,12 @@
   <h2><%= @dog.name %></h2>
 
   <% @dog.images.each do |image| %>
-    <%= image_tag url_for(image), alt: "Photo of #{@dog.name}" %>
+    <%= image_tag image.to_s, alt: "Photo of #{@dog.name}" %>
   <% end %>
 
   <p><%= @dog.description %></p>
+
+  <a href="<%= dog_path + "/like" %>"><%= if @user_likes then "Unlike" else "Like" end %></a> <%= "(#{@total_likes})" %><br>
 
   <%= link_to "Edit #{@dog.name}'s Profile", edit_dog_path %>
   <br>

@@ -1,2 +1,6 @@
 <h1>Edit Your Dog</h1>
-<%= render partial: 'form' %>
+<% if @dog.user_id == current_user.id %>
+  <%= render partial: 'form' %>
+<% else %>
+  <p style="background-color: red; color: white; padding: 5px;"><strong>You do not have permission to edit this dog's profile.</strong></p>
+<% end %>
